@@ -40,3 +40,8 @@ The website serves as a digital companion to the physical space, helping visitor
 ```bash
 git clone https://github.com/emaunicorn/prairie-garden-site
 cd prairie-garden-site
+
+
+#help
+width="8.5in"
+height="11in"
