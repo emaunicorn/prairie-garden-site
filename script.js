@@ -1,1 +1,1 @@
-console.log("Prairie garden site loaded 🌱");
+console.log("Prairie garden site loaded");
