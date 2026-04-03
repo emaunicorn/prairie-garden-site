@@ -1,17 +1,131 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: linear-gradient(135deg, #2d7a3d 0%, #4CAF50 100%);
+  color: white;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  height: 120px;
+  width: auto;
+  max-width: 200px;
+  flex-shrink: 0;
+  object-fit: contain;
+  display: block;
+}
+
+.header-text {
+  flex: 1;
+  text-align: left;
+  padding-left: 2rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .header-content {
+    padding: 1.5rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    height: 80px;
+    max-width: 150px;
+  }
+
+  .header-text {
+    padding-left: 1.5rem;
+    flex-basis: calc(100% - 80px - 1.5rem);
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-content {
+    padding: 1rem;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    height: 60px;
+    max-width: 120px;
+  }
+
+  .header-text {
+    padding-left: 0;
+    border-left: none;
+    text-align: center;
+    flex-basis: auto;
+  }
+
+  header h1 {
+    font-size: 1.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  font-weight: 300;
+  opacity: 0.95;
+  letter-spacing: 0.3px;
 }
 
 #map {
-  margin-top: 20px;
+  max-width: 1200px;
+  margin: 2rem auto;
   height: 80vh;
   min-height: 500px;
   width: 100%;
-  border: 2px solid #4CAF50;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 #map-container,
@@ -23,6 +137,9 @@ body {
 #map-container {
   overflow: hidden;
   cursor: grab;
+  width: 100%;
+  height: 100%;
+  background: white;
 }
 
 #map-container:active {
