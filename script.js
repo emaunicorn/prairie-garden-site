@@ -154,3 +154,126 @@ if (container && svg) {
 
   applyViewBox();
 }
+
+// ===== Plant Click Handler =====
+// Initialize plant interaction system
+document.addEventListener('DOMContentLoaded', function() {
+  initPlantClickHandlers();
+});
+
+/**
+ * Initialize plant click handlers
+ * Maps text elements containing plant codes to their ellipses and adds click handlers
+ */
+function initPlantClickHandlers() {
+  const svg = document.querySelector('#svg1');
+  if (!svg) return;
+
+  // Find all text elements that contain plant codes
+  const textElements = svg.querySelectorAll('text tspan[sodipodi\\:role="line"]');
+  const plantCodeMap = new Map(); // Map of plant code -> array of ellipses
+
+  textElements.forEach(tspan => {
+    const text = tspan.textContent.trim();
+    
+    // Check if this is a valid plant code (not "Sidewalk" or other labels)
+    if (text && text.length <= 3 && getAllPlantCodes().includes(text)) {
+      const textElement = tspan.closest('text');
+      if (!textElement) return;
+
+      // Get the text element's position
+      const x = parseFloat(textElement.getAttribute('x')) || 0;
+      const y = parseFloat(textElement.getAttribute('y')) || 0;
+
+      // Find nearby ellipses (within reasonable distance)
+      const ellipses = svg.querySelectorAll('ellipse');
+      ellipses.forEach(ellipse => {
+        const cx = parseFloat(ellipse.getAttribute('cx')) || 0;
+        const cy = parseFloat(ellipse.getAttribute('cy')) || 0;
+        const rx = parseFloat(ellipse.getAttribute('rx')) || 0;
+        const ry = parseFloat(ellipse.getAttribute('ry')) || 0;
+
+        // Check if text is approximately at the center of this ellipse
+        const dx = Math.abs(x - cx);
+        const dy = Math.abs(y - cy);
+        const threshold = Math.max(rx, ry) * 2;
+
+        if (dx < threshold && dy < threshold) {
+          // Store the mapping and add event listener
+          if (!plantCodeMap.has(text)) {
+            plantCodeMap.set(text, []);
+          }
+          plantCodeMap.get(text).push(ellipse);
+
+          // Add click handler to ellipse
+          ellipse.style.cursor = 'pointer';
+          ellipse.addEventListener('click', function(event) {
+            event.stopPropagation();
+            showPlantInfo(text);
+          });
+        }
+      });
+    }
+  });
+
+  console.log(`Initialized click handlers for ${plantCodeMap.size} plant species`);
+}
+
+/**
+ * Display plant information in modal
+ * @param {string} plantCode - Plant code (e.g., 'PC', 'GR')
+ */
+function showPlantInfo(plantCode) {
+  const plant = getPlantByCode(plantCode);
+  if (!plant) {
+    console.warn(`Plant not found: ${plantCode}`);
+    return;
+  }
+
+  // Update modal content
+  document.getElementById('plant-name').textContent = plant.commonName;
+  document.getElementById('plant-code').textContent = plant.code;
+  document.getElementById('plant-scientific').textContent = plant.scientificName;
+  document.getElementById('plant-description').textContent = plant.description;
+  document.getElementById('plant-height').textContent = plant.height;
+  document.getElementById('plant-spacing').textContent = plant.spacing;
+  document.getElementById('plant-count').textContent = plant.count;
+
+  // Show modal
+  const modal = document.getElementById('plant-modal');
+  modal.classList.remove('hidden');
+}
+
+/**
+ * Hide plant information modal
+ */
+function hidePlantInfo() {
+  const modal = document.getElementById('plant-modal');
+  modal.classList.add('hidden');
+}
+
+// Modal close button handler
+document.addEventListener('DOMContentLoaded', function() {
+  const closeBtn = document.querySelector('.plant-modal-close');
+  const modal = document.getElementById('plant-modal');
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', hidePlantInfo);
+  }
+
+  // Close modal when clicking outside of it
+  if (modal) {
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        hidePlantInfo();
+      }
+    });
+  }
+
+  // Close modal on ESC key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      hidePlantInfo();
+    }
+  });
+});
