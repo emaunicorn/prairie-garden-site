@@ -278,12 +278,13 @@ header h1 {
 
 /* SVG ellipse cursor feedback */
 svg ellipse {
-  transition: opacity 0.1s ease;
+  transition: opacity 0.2s ease, filter 0.2s ease;
 }
 
 svg ellipse:hover {
-  opacity: 0.8;
+  opacity: 0.3;
   cursor: pointer;
+  filter: brightness(0.8) saturate(1.5);
 }
 
 /* Mobile responsive modal */

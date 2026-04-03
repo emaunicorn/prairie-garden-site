@@ -18,7 +18,7 @@ const plantsDatabase = {
   },
   'AM': {
     code: 'AM',
-    commonName: 'Aronia cherry',
+    commonName: 'Aronia Cherry',
     scientificName: 'Aronia melanocarpa',
     genus: 'Aronia',
     species: 'melanocarpa',
@@ -54,7 +54,7 @@ const plantsDatabase = {
   },
   'BBS': {
     code: 'BBS',
-    commonName: 'Big blue stem',
+    commonName: 'Big Blue Stem',
     scientificName: 'Andropogon gerardii',
     genus: 'Andropogon',
     species: 'gerardii',
@@ -66,7 +66,7 @@ const plantsDatabase = {
   },
   'BES': {
     code: 'BES',
-    commonName: 'Black eyed susans',
+    commonName: 'Black Eyed Susans',
     scientificName: 'Rudbeckia hirta',
     genus: 'Rudbeckia',
     species: 'hirta',
@@ -78,7 +78,7 @@ const plantsDatabase = {
   },
   'BF': {
     code: 'BF',
-    commonName: 'Blue false indigo',
+    commonName: 'Blue False Indigo',
     scientificName: 'Baptisia australis',
     genus: 'Baptisia',
     species: 'australis',
@@ -90,7 +90,7 @@ const plantsDatabase = {
   },
   'BN': {
     code: 'BN',
-    commonName: 'Common boneset',
+    commonName: 'Common Boneset',
     scientificName: 'Eupatorium perfoliatum',
     genus: 'Eupatorium',
     species: 'perfoliatum',
@@ -102,7 +102,7 @@ const plantsDatabase = {
   },
   'BS': {
     code: 'BS',
-    commonName: 'Rough blazing star',
+    commonName: 'Rough Blazing Star',
     scientificName: 'Liatris aspera',
     genus: 'Liatris',
     species: 'aspera',
@@ -126,7 +126,7 @@ const plantsDatabase = {
   },
   'BV': {
     code: 'BV',
-    commonName: 'Blue vervain',
+    commonName: 'Blue Vervain',
     scientificName: 'Verbena hastata',
     genus: 'Verbena',
     species: 'hastata',
@@ -138,7 +138,7 @@ const plantsDatabase = {
   },
   'CB': {
     code: 'CB',
-    commonName: 'Wild columbine',
+    commonName: 'Wild Columbine',
     scientificName: 'Aquilegia canadensis',
     genus: 'Aquilegia',
     species: 'canadensis',
@@ -150,7 +150,7 @@ const plantsDatabase = {
   },
   'FS': {
     code: 'FS',
-    commonName: 'False sunflower',
+    commonName: 'False Sunflower',
     scientificName: 'Heliopsis helianthoides',
     genus: 'Heliopsis',
     species: 'helianthoides',
@@ -162,7 +162,7 @@ const plantsDatabase = {
   },
   'FV': {
     code: 'FV',
-    commonName: 'Wild strawberry',
+    commonName: 'Wild Strawberry',
     scientificName: 'Fragaria virginiana',
     genus: 'Fragaria',
     species: 'virginiana',
@@ -174,7 +174,7 @@ const plantsDatabase = {
   },
   'GR': {
     code: 'GR',
-    commonName: 'Showy goldenrod',
+    commonName: 'Showy Goldenrod',
     scientificName: 'Solidago speciosa',
     genus: 'Solidago',
     species: 'speciosa',
@@ -186,7 +186,7 @@ const plantsDatabase = {
   },
   'JP': {
     code: 'JP',
-    commonName: 'Spotted joe pye weed',
+    commonName: 'Spotted Joe Pye Weed',
     scientificName: 'Eutrochium maculatum',
     genus: 'Eutrochium',
     species: 'maculatum',
@@ -198,7 +198,7 @@ const plantsDatabase = {
   },
   'MF': {
     code: 'MF',
-    commonName: 'Wild bergamot',
+    commonName: 'Wild Bergamot',
     scientificName: 'Monarda fistulosa',
     genus: 'Monarda',
     species: 'fistulosa',
@@ -210,7 +210,7 @@ const plantsDatabase = {
   },
   'MI': {
     code: 'MI',
-    commonName: 'Missouri ironweed',
+    commonName: 'Missouri Ironweed',
     scientificName: 'Vernonia missurica',
     genus: 'Vernonia',
     species: 'missurica',
@@ -222,7 +222,7 @@ const plantsDatabase = {
   },
   'MM': {
     code: 'MM',
-    commonName: 'Mountain mint',
+    commonName: 'Mountain Mint',
     scientificName: 'Pycnanthemum virginianum',
     genus: 'Pycnanthemum',
     species: 'virginianum',
@@ -234,7 +234,7 @@ const plantsDatabase = {
   },
   'NJ': {
     code: 'NJ',
-    commonName: 'New Jersey tea',
+    commonName: 'New Jersey Tea',
     scientificName: 'Ceanothus americanus',
     genus: 'Ceanothus',
     species: 'americanus',
@@ -246,7 +246,7 @@ const plantsDatabase = {
   },
   'OP': {
     code: 'OP',
-    commonName: 'Obedient plant',
+    commonName: 'Obedient Plant',
     scientificName: 'Physostegia virginiana',
     genus: 'Physostegia',
     species: 'virginiana',
@@ -258,7 +258,7 @@ const plantsDatabase = {
   },
   'OS': {
     code: 'OS',
-    commonName: 'Ohio spiderwort',
+    commonName: 'Ohio Spiderwort',
     scientificName: 'Tradescantia ohiensis',
     genus: 'Tradescantia',
     species: 'ohiensis',
@@ -270,7 +270,7 @@ const plantsDatabase = {
   },
   'PC': {
     code: 'PC',
-    commonName: 'Purple coneflower',
+    commonName: 'Purple Coneflower',
     scientificName: 'Echinacea purpurea',
     genus: 'Echinacea',
     species: 'purpurea',
@@ -282,7 +282,7 @@ const plantsDatabase = {
   },
   'PD': {
     code: 'PD',
-    commonName: 'Prairie dropseed',
+    commonName: 'Prairie Dropseed',
     scientificName: 'Sporobolus heterolepis',
     genus: 'Sporobolus',
     species: 'heterolepis',
@@ -306,7 +306,7 @@ const plantsDatabase = {
   },
   'RM': {
     code: 'RM',
-    commonName: 'Rattlesnake master',
+    commonName: 'Rattlesnake Master',
     scientificName: 'Eryngium yuccifolium',
     genus: 'Eryngium',
     species: 'yuccifolium',
@@ -318,7 +318,7 @@ const plantsDatabase = {
   },
   'SB': {
     code: 'SB',
-    commonName: 'Downy service berry',
+    commonName: 'Downy Service Berry',
     scientificName: 'Amelanchier arborea',
     genus: 'Amelanchier',
     species: 'arborea',
@@ -330,7 +330,7 @@ const plantsDatabase = {
   },
   'SBA': {
     code: 'SBA',
-    commonName: 'Smooth blue aster',
+    commonName: 'Smooth Blue Aster',
     scientificName: 'Symphyotrichum laeve',
     genus: 'Symphyotrichum',
     species: 'laeve',
@@ -354,7 +354,7 @@ const plantsDatabase = {
   },
   'WH': {
     code: 'WH',
-    commonName: 'Witch hazel',
+    commonName: 'Witch Hazel',
     scientificName: 'Hamamelis virginiana',
     genus: 'Hamamelis',
     species: 'virginiana',
@@ -366,7 +366,7 @@ const plantsDatabase = {
   },
   'WM': {
     code: 'WM',
-    commonName: 'Whorled milkweed',
+    commonName: 'Whorled Milkweed',
     scientificName: 'Asclepias verticillata',
     genus: 'Asclepias',
     species: 'verticillata',
@@ -378,7 +378,7 @@ const plantsDatabase = {
   },
   'WP': {
     code: 'WP',
-    commonName: 'Wild petunia',
+    commonName: 'Wild Petunia',
     scientificName: 'Ruellia humilis',
     genus: 'Ruellia',
     species: 'humilis',
@@ -390,7 +390,7 @@ const plantsDatabase = {
   },
   'YC': {
     code: 'YC',
-    commonName: 'Yellow coneflower',
+    commonName: 'Yellow Coneflower',
     scientificName: 'Ratibida pinnata',
     genus: 'Ratibida',
     species: 'pinnata',
