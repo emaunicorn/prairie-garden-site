@@ -167,7 +167,13 @@ document.addEventListener('DOMContentLoaded', function() {
  * @returns {string} Hex color
  */
 function rgbToHex(color) {
-  if (color.startsWith('#')) return color;
+  if (color.startsWith('#')) {
+    // If hex with alpha (9 chars) and alpha is ff, strip it
+    if (color.length === 9 && color.slice(-2) === 'ff') {
+      return color.slice(0, 7);
+    }
+    return color;
+  }
   if (color.startsWith('rgb')) {
     const rgb = color.match(/\d+/g);
     if (rgb.length >= 3) {
@@ -189,9 +195,8 @@ function initPlantClickHandlers() {
   const shapes = svg.querySelectorAll('ellipse, circle');
 
   shapes.forEach(shape => {
-    // Get the fill color using computed style
-    const computedStyle = getComputedStyle(shape);
-    let fill = computedStyle.fill;
+    // Get the fill color from style or attribute
+    let fill = shape.style.fill || shape.getAttribute('fill');
     if (!fill || fill === 'none') return;
 
     // Convert rgb to hex if necessary
@@ -202,6 +207,7 @@ function initPlantClickHandlers() {
 
     // Find the plant by color
     const plant = getPlantByColor(fill);
+    console.log('Shape fill:', fill, 'plant:', plant ? plant.code : 'none');
     if (plant) {
       shape.style.cursor = 'pointer';
       shape.addEventListener('click', function(event) {
@@ -266,8 +272,11 @@ function getPlantByCode(code) {
  */
 function getPlantByColor(color) {
   for (const code in plantsDatabase) {
-    if (plantsDatabase[code].color && plantsDatabase[code].color.toLowerCase() === color) {
-      return plantsDatabase[code];
+    if (plantsDatabase[code].color) {
+      const dbColor = rgbToHex(plantsDatabase[code].color.toLowerCase());
+      if (dbColor === color) {
+        return plantsDatabase[code];
+      }
     }
   }
   return null;
