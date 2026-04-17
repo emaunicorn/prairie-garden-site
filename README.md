@@ -35,6 +35,76 @@ The website serves as a digital companion to the physical space, helping visitor
 - (Optional) Leaflet.js / Mapbox for mapping
 
 ## Getting Started
+color palate:
+#2596BE (your blue) - BV
+
+#4AB1D4 (lighter tint) - WP
+
+#7CCDE4 (soft sky blue) - BST
+
+#0F6A8F (deeper shade) - BF
+
+#CC9EE8 (lavender) - AC
+
+#371A88 (deep violet) - PP
+
+#E5C9F4 (light pastel purple) - SBA
+
+#8A63C7 (mid-tone violet) - BS
+
+#4E2FA3 (rich royal purple) - OS
+
+#1A6E4E (deep forest green) - BBS
+
+#2D7A3D (earthy green) - PD
+
+#4CAF50 (vibrant green) - SB
+
+#7BCF8A (minty green) - SG
+
+#E5B92D (gold) - YC
+
+#F2D56B (soft goldenrod) - GR
+
+#F9E8A6 (pale yellow) - BES
+
+#C49A1F (antique gold) - WH
+
+#fcdd00ff (flower yellow) - GA
+
+#B98A5A (tan) - BB
+
+#E2C9A8 (light sand) - WM
+
+#F8F9FA (off‑white) - NJ
+
+#A9A9A9 (mid gray) - BN
+
+#d6f4d7ff (light mint green) - RM
+
+#B34A3C (rust red) - CB
+
+#D97A5C (warm coral) - AT
+
+#A0D1C2 (seafoam) - MM
+
+#a992ffff (blue‑purple) - FS
+
+#b34a3cff (light-red) - CB
+
+#8E1E1E (dark wine red) - FV
+
+#D9534F (balanced mid red) - AM
+
+#F4A7B9 (soft rose pink) - JP
+
+#E56C8A (vibrant raspberry pink) - MI
+
+#F7C9D8 (pale blush pink) - MF
+
+#E7B4D6 (light lavander pink) - PC
+
+#FF8FA3 (bright modern pink) - OP
 
 ### Clone the repo
 ```bash

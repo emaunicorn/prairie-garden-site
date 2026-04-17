@@ -162,61 +162,59 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
+ * Convert rgb or rgba to hex
+ * @param {string} color - Color string
+ * @returns {string} Hex color
+ */
+function rgbToHex(color) {
+  if (color.startsWith('#')) return color;
+  if (color.startsWith('rgb')) {
+    const rgb = color.match(/\d+/g);
+    if (rgb.length >= 3) {
+      return '#' + ((1 << 24) + (parseInt(rgb[0]) << 16) + (parseInt(rgb[1]) << 8) + parseInt(rgb[2])).toString(16).slice(1);
+    }
+  }
+  return color;
+}
+
+/**
  * Initialize plant click handlers
- * Maps text elements containing plant codes to their ellipses and adds click handlers
+ * Adds click handlers to ellipses and circles based on their fill color
  */
 function initPlantClickHandlers() {
   const svg = document.querySelector('#svg1');
   if (!svg) return;
 
-  // Find all text elements that contain plant codes
-  const textElements = svg.querySelectorAll('text tspan[sodipodi\\:role="line"]');
-  const plantCodeMap = new Map(); // Map of plant code -> array of ellipses
+  // Find all ellipses and circles
+  const shapes = svg.querySelectorAll('ellipse, circle');
 
-  textElements.forEach(tspan => {
-    const text = tspan.textContent.trim();
-    
-    // Check if this is a valid plant code (not "Sidewalk" or other labels)
-    if (text && text.length <= 3 && getAllPlantCodes().includes(text)) {
-      const textElement = tspan.closest('text');
-      if (!textElement) return;
+  shapes.forEach(shape => {
+    // Get the fill color using computed style
+    const computedStyle = getComputedStyle(shape);
+    let fill = computedStyle.fill;
+    if (!fill || fill === 'none') return;
 
-      // Get the text element's position
-      const x = parseFloat(textElement.getAttribute('x')) || 0;
-      const y = parseFloat(textElement.getAttribute('y')) || 0;
+    // Convert rgb to hex if necessary
+    fill = rgbToHex(fill);
 
-      // Find nearby ellipses (within reasonable distance)
-      const ellipses = svg.querySelectorAll('ellipse');
-      ellipses.forEach(ellipse => {
-        const cx = parseFloat(ellipse.getAttribute('cx')) || 0;
-        const cy = parseFloat(ellipse.getAttribute('cy')) || 0;
-        const rx = parseFloat(ellipse.getAttribute('rx')) || 0;
-        const ry = parseFloat(ellipse.getAttribute('ry')) || 0;
+    // Normalize to lowercase
+    fill = fill.toLowerCase();
 
-        // Check if text is approximately at the center of this ellipse
-        const dx = Math.abs(x - cx);
-        const dy = Math.abs(y - cy);
-        const threshold = Math.max(rx, ry) * 2;
-
-        if (dx < threshold && dy < threshold) {
-          // Store the mapping and add event listener
-          if (!plantCodeMap.has(text)) {
-            plantCodeMap.set(text, []);
-          }
-          plantCodeMap.get(text).push(ellipse);
-
-          // Add click handler to ellipse
-          ellipse.style.cursor = 'pointer';
-          ellipse.addEventListener('click', function(event) {
-            event.stopPropagation();
-            showPlantInfo(text);
-          });
-        }
+    // Find the plant by color
+    const plant = getPlantByColor(fill);
+    if (plant) {
+      shape.style.cursor = 'pointer';
+      shape.addEventListener('click', function(event) {
+        event.stopPropagation();
+        console.log('Clicked plant:', plant.code, 'color:', fill);
+        showPlantInfo(plant.code);
       });
+    } else {
+      console.log('No plant found for color:', fill);
     }
   });
 
-  console.log(`Initialized click handlers for ${plantCodeMap.size} plant species`);
+  console.log(`Initialized click handlers for plant shapes`);
 }
 
 /**
@@ -250,6 +248,37 @@ function showPlantInfo(plantCode) {
 function hidePlantInfo() {
   const modal = document.getElementById('plant-modal');
   modal.classList.add('hidden');
+}
+
+/**
+ * Get plant data by code
+ * @param {string} code - Plant code
+ * @returns {object|null} Plant data or null
+ */
+function getPlantByCode(code) {
+  return plantsDatabase[code] || null;
+}
+
+/**
+ * Get plant data by color
+ * @param {string} color - Fill color
+ * @returns {object|null} Plant data or null
+ */
+function getPlantByColor(color) {
+  for (const code in plantsDatabase) {
+    if (plantsDatabase[code].color && plantsDatabase[code].color.toLowerCase() === color) {
+      return plantsDatabase[code];
+    }
+  }
+  return null;
+}
+
+/**
+ * Get all plant codes
+ * @returns {array} Array of plant codes
+ */
+function getAllPlantCodes() {
+  return Object.keys(plantsDatabase);
 }
 
 // Modal close button handler
